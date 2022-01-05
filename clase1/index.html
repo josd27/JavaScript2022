@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function obtener(){
+            var div= document.getElementById("uf");
+            //AJAX 
+            var url2=""
+            var url="https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";         
+            console.log("funciona!!!");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    var data= xhr.responseText;
+                    var json= JSON.parse(data);
+                    console.log(data);
+                    console.log(json.UFs[0].Valor);
+                    div.innerHTML=json.UFs[0].Valor;
+                }
+            }
+            /*
+            state = 0 cuando una peticion http NO SE HA INICIADO
+                    1 Cliente envia los datos al servidor
+                    2 Servidor Recibe los del cliente
+                    3 Servidor envia la respuesta al cliente
+                    4 Cliente recibe la respuesta
+            status = 200,300,400,500
+            */
+
+
+            xhr.open("get", url);//false por defecto es true
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div id="uf"></div>
+    <button onclick="obtener()">Obtener UF</button>
+    
+</body>
+</html>
+

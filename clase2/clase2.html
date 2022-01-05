@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //pseudoClases
+        //FUNCION CONSTRUCTORA
+        //let self=this no lo recomiendo
+        function Persona(){
+            //var edad=0;
+            this.nombre="";
+            this.apellido="";
+            this.direccion="";
+            this.hablar= function(){
+                alert(this.nombre +" esta hablando");
+            }
+        }
+
+        var per1= new Persona();
+        per1.nombre="Jose"
+        per1.direccion="Mi Casa";
+        per1.hablar();
+
+        var per2= new Persona();
+        per2.nombre="Sergio";
+        per2.hablar();
+
+        console.log("Persona2", per2);
+        console.log(per1.nombre);
+        console.log(per1.edad);
+        console.log(per1);
+
+        function Alumno(nombre, apellido){
+            this.nombre=nombre;
+            this.apellido=apellido;
+            this.direccion="No disponible";
+        }
+
+        var alu1= new Alumno("Jose", "Quezada");
+        alu1.direccion="Mi casa";
+        console.log(alu1);
+        var alu2 = new Alumno();
+        console.log(alu2);
+        /*
+        Constructor por defecto
+        new Clase()
+        Cuando solicito parametros creo mi propio constructor
+        */
+
+        /*const uf=31000;
+
+
+        function calcular(tasa){
+            console.log(uf*tasa)
+        }*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

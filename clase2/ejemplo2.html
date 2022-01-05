@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        class Persona{
+            //atributos de la clase
+            nombre="NN";
+            apellido="";
+            direccion="";
+            rut="";
+
+            hablar(){
+                alert(this.nombre + "esta hablando")
+            }
+        }
+        //herencia
+        //hijo izquierda y el padre a la derecha del extends
+        class Alumno extends Persona{
+            
+            numeroMatricula=0;
+
+            estudiar(){
+                alert("Estudiando");
+            }
+            /*constructor(nombre, apellido){
+                this.nombre=nombre;
+                this.apellido=apellido;
+                this.direccion="no disponible";
+            }*/
+        }
+
+        class Profesor extends Persona{
+            numeroContrato=0;
+            enseñar(){
+                alert("profesor enseñando");
+            }
+        }
+        var per1= new Persona();
+        per1.edad=8;//atributo de la instancia/objeto
+        var alu1= new Alumno("Jose", "Quezada");
+        alu1.estudiar();
+        alu1.hablar();
+        var alu2= new Alumno();
+        console.log(alu1);
+        
+        console.log(alu2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
