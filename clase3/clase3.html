@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Persona{
+            /*nombre="";
+            apellido="";
+            _edad=0;*/
+            constructor(nombre, apellido,edad){
+                this._nombre=nombre;
+                this._apellido=apellido;
+                this._edad=edad;
+            }
+            //getter setter
+            //selectores mutadores
+            set nombre(nv){
+                this._nombre=nv;
+            }
+
+            /*nombre1(value1){
+                this._nombre=value1;
+            }*/
+
+            set apellido(nuevoValor){
+                this._apellido= nuevoValor;
+            }
+
+            get edad(){
+                return this._edad-5;
+            }
+
+            set edad(nuevoValor){//void
+                if(nuevoValor!='')
+                    this._edad= nuevoValor;
+            }
+
+            get nombreCompleto(){
+                return "Sr(a)"+ this._nombre + " " + this._apellido;
+            }
+
+        }
+
+        class Estudiante extends Persona{
+            numeroMatricula=0;
+
+            constructor(nombre, apellido, edad, numeroMatricula, direccion){
+                super(nombre, apellido, edad);
+                this.numeroMatricula= numeroMatricula;
+                this.direccion=direccion;
+
+            }
+            estudiar(hrs){
+                alert("estudiando " + hrs +" hrs");
+            }
+        }
+
+
+
+
+
+
+
+
+
+        class Profesor extends Persona{
+            numeroContrato=0;
+            constructor(nombre, apelllido, edad){
+                super(nombre, apelllido,edad);
+            }
+            trabajar(hrs){
+                alert("trabajando "+ hrs + " hrs");
+            }
+        }
+
+        let pro= new Profesor("Profe", "Apellido",30 );
+        console.log(pro);
+
+        let est1= new Estudiante();
+        //est1.nombre="Estudiante 1";
+        est1.nombre1("Estudiante 1");
+
+        console.log(est1.nombreCompleto);
+
+        let per1= new Persona("Jose","Quezada", 30);
+        console.log(per1);
+        console.log(per1.edad);
+        console.log(per1.nombre);
+        console.log(per1._edad);
+        console.log(per1.nombreCompleto);
+        per1.edad=20;
+        console.log(per1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
