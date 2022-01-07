@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Persona{
+            nombre="";
+            apellido="";
+
+            /*toString(){
+                return this.nombre + " " + this.apellido;
+            }*/
+        }
+
+        Persona.prototype.edad=0;
+        Object.prototype.color="rojo";
+
+        class Docente extends Persona{
+            numeroContrato=0;
+        }
+        
+        let obj= new Object();
+        let per= new Persona();
+        let doc= new Docente();
+
+        per.nombre="Jose";
+        per.apellido='Quezada';
+        console.log("Obj",obj);
+        console.log("Persona",per);
+        console.log("Docente",doc);
+        console.log(per.toString());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

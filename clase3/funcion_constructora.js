@@ -7,10 +7,10 @@ function Persona(nombre, apellido, edad){
 }
 
 function Estudiante(numeroMatricula){
-    Persona.call(this);
+    //Persona.call(this);
     this.numeroMatricula=numeroMatricula;
 }
-
+var est0 = Object.create(Persona);
 var est1= new Estudiante(123);
 console.log(est1);
 
@@ -18,4 +18,5 @@ console.log(est1);
 
 var per= new Persona();
 
-per.nacimiento="01/01/2021"
+per.nacimiento="01/01/2021";
+per.suerte="mucha";

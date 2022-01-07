@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reproducir(){
+            let mortal= document.getElementById("mortal");
+            console.log(mortal);
+            mortal.play();
+        }
+        
+    </script>
+</head>
+<body>
+    <audio id="mortal" src="mortal-kombat-finish-her.mp3" type="audio/mpeg" controls>
+      
+    </audio>
+
+    <button onclick="reproducir()">Play</button>
+    
+</body>
+</html>

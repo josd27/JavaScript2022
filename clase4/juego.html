@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="juego.js"></script>
+    <script>
+        let juego1= new Juego();
+        let tank= new Tanque();
+        let avion1= new Avion("Condor Rojo");
+        let barquito= new Barco();
+        
+        //avion1.nombre="Condor Rojo";
+        let equipo1=[];//tanke
+        let equipo2=[];//aviones
+        let equipo3= new Array();//barcos
+
+        equipo1.push(new Tanque("Tank 1"));        
+        equipo1.push(new Tanque("Tank 2"));
+        equipo1.push(new Tanque("Tank 3"));
+
+        equipo2.push(new Avion("El condor Rojo"));
+        //avion1.nombre="Aguilucho Verde";
+        equipo2.push(new Avion("El aguilucho verde"));
+        //avion1.nombre="Gorrion Negro";
+        equipo2.push(new Avion("El gorrion Negro"));
+
+
+        equipo3.push(new Barco("b1"));
+        equipo3.push(new Barco("b2"));
+        equipo3.push(new Barco("b3"));
+
+        console.log(equipo1);
+        console.log(equipo2);        
+        console.log(equipo3);
+
+        for(let i=0; i< equipo1.length; i++){
+            console.log(equipo1[i].atack());
+        }
+        for(let i=0; i< equipo2.length; i++){
+            console.log(equipo2[i].atack());
+        }
+        for(let i=0; i< equipo3.length; i++){
+            console.log(equipo3[i].atack());
+        }
+
+        /*let nombre="Jose";
+        let nombre2=nombre;
+
+        nombre="Eduardo";
+
+        console.log("N",nombre);
+        console.log("N2",nombre2);*/
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

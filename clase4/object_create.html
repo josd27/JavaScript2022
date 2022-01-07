@@ -5,17 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="funcion_constructora.js?v=2"></script>
     <script>
-        let obj= new Object();
-        obj.nombre="Jose";
-    </script>
-    <link rel="stylesheet" href="asda.css">
-    <style>
-        body{
-            color:red;
+        let per= {
+            nombre:'',
+            apellido:''
         }
-    </style>
+
+        let alu2= Object.create(per);
+        alu2.numeroMatricula=123;
+        console.log(alu2);
+
+        /*
+        let per= new Object();
+        per.nombre='';
+        per.apellido='';
+        */
+
+    </script>
 </head>
 <body>
     
