@@ -83,10 +83,17 @@ getPromiseUF()
 
 
 
-/*let valor= getXHR();
+/*let valor= await getXHR();
 console.log(valor + "asd");*/
 
 //WAMPP
 //LAMPP
 //XAMPP
 //MAMPP
+
+async function getDog(){
+    //....
+    //return
+}
+
+let img= await getDog();
