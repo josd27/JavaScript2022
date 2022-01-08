@@ -1,5 +1,5 @@
 
-
+//funcion experimental fetch
 function getUF(){
     let url="https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";
     //promesa
@@ -9,7 +9,7 @@ function getUF(){
     .then((uf)=> uf.Valor)
     .then((v)=> {console.log(v)});
 }
-
+//funcion experimental fetch pero con menos then
 function getUFv2(){
     let url="https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";
     //promesa
@@ -21,8 +21,8 @@ function getUFv2(){
         console.log(valor);
     });
 }
-
-function getXHR(fun){
+//funcion XHR(AJAX) con CALL BACK
+function getXHR(fun){//fun es una funcion
     let url="https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";
     
     let xhr= new XMLHttpRequest();
@@ -44,9 +44,9 @@ function calcular(uf){
 }
 
 getXHR(calcular);
+//Fin ejemplo CALL BACK
 
-
-
+//XHR AJAX CON PROMESAS
 function getPromiseUF(){
     return new Promise((exito, fracaso)=>{
         let url="https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";
@@ -77,8 +77,8 @@ function getPromiseUF(){
 }
 
 getPromiseUF()
-.then(resp=>{console.log("PROMESA", resp)})
-.catch(error=>{console.log(error)});
+.then(resp=>{console.log("PROMESA", resp)})//procesar y mostrar respuestas en el exito
+.catch(error=>{console.log(error)});//Capturar error en el fracaso
 
 
 
