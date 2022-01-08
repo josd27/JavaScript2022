@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    //thread star(), suspend(), resume(), abort()
+
+    function ejecutar(){   
+        let btn= document.getElementById("btn");
+        //btn.setAttribute("disabled", "disabled");
+        btn.style.display="none";
+        setTimeout(()=>{
+            console.log("Hola soy un timeout"+ this);
+            //btn.setAttribute("disabled", "false");
+            //btn.style.marginTop="block";
+            btn.style.display="block"
+        },5000);
+    }
+
+    function getData(id){
+        let usuario1 = {id: 2356256,name: 'Juan',lastName: 'Duran',age: 35}
+        let usuario2 = {id: 27564512,name: 'Manuel',lastName: 'Perez',age: 31}
+        let usuario3 = {id: 17658624,name: 'Jocelyn',lastName: 'Rodriguez',age: 30}
+        let usuario4 = {id: 12345678,name: 'Maria',lastName: 'Garrido',age: 30}
+        let usuarios=[usuario1];
+        usuarios.push(usuario1);
+        usuarios.push(usuario2);
+        usuarios.push(usuario3);
+        usuarios.push(usuario4);
+        let encontrado=0;
+        usuarios.forEach((ele, index, array)=>{
+            //console.log(ele,index,array);
+            console.log(ele.id===id);
+            console.log(ele.id, id);
+            if(ele.id===id){
+                //return ele;
+                encontrado= ele;
+                //return array[index]
+            }
+        });
+        return encontrado;
+
+    }
+
+    /*/let data=getData(12345678);
+    console.log(data);*/
+    function mostrarData(){
+        /*setTimeout(()=>{
+            console.log(getData(12345678));
+        },1000);*/
+        setTimeout(getData(12345678),1000);
+    }
+
+    </script>
+</head>
+<body>
+    <button id="btn" onclick="ejecutar()">SetTimeOut</button>
+    <button onclick="mostrarData()">GetData</button>
+</body>
+</html>
