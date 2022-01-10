@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+    <script>
+        async function getData(method, url, func){
+            let xhr= new XMLHttpRequest();
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    func(JSON.parse(xhr.responseText));
+                }
+            }
+            xhr.open(method, url);
+            xhr.send();
+        }
+
+        function dibujarPerro(obj){
+            let img = document.getElementById("animalito");
+            console.log(img, obj);
+            img.setAttribute("src", obj.message);
+        }
+
+        function dibujarGato(obj){
+            let img = document.getElementById("animalito");
+            console.log(img, obj);
+            img.setAttribute("src", obj[0].url);
+        }
+
+        async function perro(){
+            let url="https://dog.ceo/api/breeds/image/random";
+            await getData("get", url, dibujarPerro);
+            
+        }
+
+        async function gato(){
+            let url="https://api.thecatapi.com/v1/images/search"
+            await getData("get", url, dibujarGato);
+            
+        }
+
+    </script>
+</head>
+<body>
+    <img id="animalito" alt="foto animalito">
+    <button onclick="perro()">Obtener Perro</button>
+    
+    <button onclick="gato()">Obtener Gato</button>
+</body>
+</html>
