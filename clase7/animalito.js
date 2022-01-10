@@ -1,5 +1,5 @@
         let img= document.getElementById("animalito");
-        function getData(method, url){
+        async function getData(method, url){
             return new Promise((exito, fracaso)=>{
                 let xhr= new XMLHttpRequest();
                 xhr.onreadystatechange= function(){
@@ -13,28 +13,30 @@
             });
         }
 
-        function perro(){
+        async function perro(ele){
             
             let url="https://dog.ceo/api/breeds/image/random";
-            getData("get", url)
+            await getData("get", url)
             .then(txt=> JSON.parse(txt))
             .then(json=> {
                 img.setAttribute("src", json.message)
             });
-            
+            console.log(ele);
+            ele.setAttribute("disabled", "disabled");            
         }
         function dibujarGato(obj){
             img.setAttribute("src", obj[0].url);
         }
 
 
-        function gato(){
+        function gato(ele){
             let url="https://api.thecatapi.com/v1/images/search";
             getData("get", url)
             .then(txt=> JSON.parse(txt))
             .then(json=> {
                 img.setAttribute("src", json[0].url)
             });
+            ele.setAttribute("disabled", "disabled");
         }
 
         function gato2(){

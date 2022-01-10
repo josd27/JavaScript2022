@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="animalito.js"></script>
+    <style>
+        img{
+            width: 100px;;
+        }
+    </style>
 </head>
 <body>
     <img id="animalito">
-    <button onclick="perro()">Perro</button>
-    <button onclick="gato()">Gato</button>
+    <button onclick="perro(this)">Perro</button>
+    <button onclick="gato(this)">Gato</button>
     
     <button onclick="gato2()">Gato2</button>
 </body>
