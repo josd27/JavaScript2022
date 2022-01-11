@@ -47,3 +47,12 @@
                dibujarGato(json);
             });
         }
+
+        (function (){
+            let url="https://api.thecatapi.com/v1/images/search";
+            getData("get", url)
+            .then(txt=> JSON.parse(txt))
+            .then(json=> {
+                dibujarGato(json);
+            });
+        })();

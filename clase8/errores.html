@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let division= 8/0;
+        console.log(division);
+        let div = document.getElementById("divquenoexiste");
+        
+        try{
+            let num=2.5;
+            let a = []; a.length = a.length - 1
+            //div.innerHTML="Hola Mundo";
+            //todo lo que voy a intentar ejecutar
+            //todo el codigo que podria generar un error
+            //throw new Error("Error personalizado");
+            //throw new Error(2001);
+            //throw new Error(true);
+            //throw new Error({"mensaje":"error que me invente", cod:2001});
+            //levantas pantalla cargando
+        }
+        catch(ex){
+            if(ex.name=="RangeError"){
+                alert("Ingrese numeros desde 0");
+            }
+            //la captura del error para que el programa no muera
+            //mostrar un mensaje personalizado y seguir con la ejecucion
+            console.log(ex, ex.name, ex.message);
+            //alert(ex);
+        }        
+        finally{
+            //cierra u oculta el loading
+            console.log("Siempre me voy a ejecutar con o sin errores");
+        }
+        function getValue(){
+            return 2.1;
+        };
+        getValue();
+
+        
+        console.log("Hola Mundo");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
