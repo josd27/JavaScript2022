@@ -1,3 +1,3 @@
-import * as Animales from "./finanzas.js";
+import * as Finanzas from "./finanzas.js";
 
-Juanito.descontar(5000);
+Finanzas.descontar(5000);
