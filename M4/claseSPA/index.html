@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="chile.js"></script>
+    <script>
+        function navegar(url){
+            
+            fetch(url).then(res=> res.text())
+            .then(txt=> {
+                div.innerHTML=txt;
+            });
+        }
+
+        function navegarv2(url){
+            let div = document.getElementById("dinamico");
+            let xhr= new XMLHttpRequest();
+            xhr.onload=function(){
+                div.innerHTML= xhr.responseText;
+                editar();
+            }
+            xhr.open("get", url);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <li><a href="">Inicio</a></li>        
+        <li><a onclick="navegarv2('otro.html')" href="#otro">Otro</a></li>
+    </nav>
+    <div id="dinamico">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, harum. Quos culpa nobis provident autem qui quo, beatae optio dignissimos quisquam illum enim ad nesciunt delectus! Exercitationem magnam vel fugiat!
+    </div>
+</body>
+</html>
