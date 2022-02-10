@@ -4,7 +4,8 @@ const https = require("https");
 const url="https://rickandmortyapi.com/api/character/120";
 
 https.get(url, (resp)=>{
-    resp.on('data', (respuesta)=>{
+    resp.on('data', respuesta=>{
+        console.log(respuesta);//array bit
         console.log(JSON.parse(respuesta));
     })
 })
