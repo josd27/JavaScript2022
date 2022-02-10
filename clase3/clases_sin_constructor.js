@@ -1,9 +1,12 @@
 class SerVivo{
-    nombre="no determinado";
+    nombre="";
 }
 
 class Mamifero extends SerVivo{
-    cantidadCrias=0;
+    _cantidadCrias=0;
+    set cantidadCrias(value){
+        this._cantidadCrias=value;
+    }
 }
 
 class Gato extends Mamifero{
@@ -12,5 +15,5 @@ class Gato extends Mamifero{
 
 let gatito= new Gato();
 gatito.raza="un gato";
-//gatito.cantidadCrias=6;
+gatito.cantidadCrias=6;
 gatito.nombre="michi";

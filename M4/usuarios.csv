@@ -1,0 +1,8 @@
+id, usuario_id, titulo, fecha
+1, 1, Post 1: Esto es malo, 2020-06-29
+2, 5, Post 2: Esto es malo, 2020-06-20
+3, 1, Post 3: Esto es excelente, 2020-05-30
+4, 9, Post 4: Esto es bueno, 2020-05-09
+5, 7, Post 5: Esto es bueno, 2020-07-10
+6, 5, Post 6: Esto es excelente, 2020-07-18
+7, 8, Post 7: Esto es excelente, 2020-07-07

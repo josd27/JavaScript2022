@@ -1,4 +1,4 @@
-
+//import hola from 'chile.js';
 
 async function navegar(url){
     console.log(event);
