@@ -34,3 +34,21 @@ http.createServer((req, res)=>{
 .listen(port, ()=>{
     console.log(`escuchando el puerto ${port}`);
 })
+
+/*let d1=9;
+let d2=5;
+function a(){
+
+}
+
+function b(){
+
+}
+
+d1>d2 ? a(): b()
+operador ternario ? :
+boolean ? true : false
+(9>1 && 100>50) ? true : false
+(tengoPlata && tengoCupo) ? trasfiere() : anula() TODOS LOS LENGUAJES
+C# boolean ?? dato
+*/
