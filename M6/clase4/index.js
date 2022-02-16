@@ -7,6 +7,7 @@ http.createServer((req, res)=>{
         const params = url.parse(req.url, true).query;
         if(params.nombre=="Jose" && params.clave=="123456"){
             res.write(`Bienvenido usuario ${params.nombre}`);
+            //SQL select * from usuarios where nombre= params.nombre and clave = params.clave
         }
         else{
             res.write("Usuario o clave no validos");
@@ -17,4 +18,4 @@ http.createServer((req, res)=>{
 })
 .listen(port, ()=>{
     console.log("Servidor iniciado")
-})
+});

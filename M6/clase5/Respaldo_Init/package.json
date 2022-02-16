@@ -1,0 +1,14 @@
+{
+  "name": "ejemplo_init",
+  "version": "1.0.0",
+  "description": "un modulo unico",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JQ",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
