@@ -1,5 +1,5 @@
 const axios = require("axios");
-const url="https://rickandmortyapi.com/api/character/10000000000000000";
+const url="https://rickandmortyapi.com/api/character/1";
 axios.get(url)
 .then((res)=>{
     console.log(res.data.name);
