@@ -1,6 +1,7 @@
 const http = require("http");//interno de node
 const url = require("url");
 const mail = require("./mailer");
+const nombre_cualquiera = require("./modulos/matematica");
 const fs = require("fs");
 const port = 8080;//3000-> express
 
@@ -14,6 +15,7 @@ http.createServer((req, res)=>{
     asunto= argumentos.asunto;
     contenido= argumentos.contenido;*/
     if(req.url=="/"){
+        console.log(nombre_cualquiera(5,9));
         res.setHeader("Content-Type","text/html");
         fs.readFile(
             "index.html",

@@ -17,11 +17,15 @@ function enviar(to, subject, text){
         from:destinatario,
         to,
         subject,
-        text
+        text//html cuerpo del correo,
+
     }
 
     tranportador.sendMail(opciones, (err, data)=>{
         console.log(err, data);
+        if(err){
+            console.log(err);
+        }
     });
 }
 /*function otraFuncion(){
