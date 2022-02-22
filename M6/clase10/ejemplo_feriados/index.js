@@ -8,7 +8,6 @@ axios.get(url).then((res)=>{
     data.data.forEach(element => {
         console.log(element.date);        
     });
-
 });
 
 /*

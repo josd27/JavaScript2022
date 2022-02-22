@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--enviar-->
+    <!-- Ejemplo1
+        localhost:8080/misitio/bonito/correo
+        <form method="get" action="enviar">
+        localhost:8080/misitio/bonito/correo/enviar
+
+        Ejemplo2
+        localhost:8080/misitio/bonito/correo
+        <form method="get" action="/enviar">
+        localhost:8080/enviar
+    -->
+
+    <form method="get" action="/enviar">
+        <input placeholder="Para" name="para">
+        <input placeholder="Asunto" name="asunto">
+        <textarea placeholder="Contenido" name="contenido"></textarea>
+        <button>Enviar</button>
+    </form>
+</body>
+</html>
