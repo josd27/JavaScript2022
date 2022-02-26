@@ -69,7 +69,8 @@ http.createServer((req,res)=>{
                     if(item.id==id){
                         //elimina
                         console.log(item);
-                        delete array[index];//NO usar
+                        array.splice(index, 1);
+                        //delete array[index];//NO usar
                         //https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_remove
                         console.log(obj);
                         fs.writeFile(
@@ -86,6 +87,79 @@ http.createServer((req,res)=>{
         )
 
         res.end();
+    }
+
+    if(req.url.includes("/editar")){
+        let {id,name, lastname, email, password} = url.parse(req.url, true).query;
+        id= parseInt(id);
+        let new_obj={
+            id,//identificar
+            name,
+            lastname,
+            email,
+            password
+        }
+        console.log("new_obj", new_obj);
+        fs.readFile(
+            "usuarios.json",
+            "utf-8",
+            (err, data)=>{
+                let json =JSON.parse(data);
+                console.log("json", json);
+                json.usuarios.find((item, index, array)=>{
+                    if(item.id==new_obj.id){
+                        //item.name= new_obj.name;
+                        console.log("encontre el item", item, new_obj);
+                        array[index]= new_obj;
+                    }
+                });
+                
+                console.log("actualizado", json);
+                fs.writeFile(
+                    "usuarios.json",
+                    JSON.stringify(json),//guardar info actualizada
+                    "utf-8",
+                    (err)=>{
+                        console.log(err);
+                    }
+                )
+                res.end();
+                
+            }
+        );
+    }
+    if(req.url.includes("/traer_todo")){
+        fs.readFile(
+            "usuarios.json",
+            "utf-8",
+            (err, data)=>{
+                res.setHeader("Content-Type","application/json");
+                res.end(data);
+            }
+        )
+    }
+    if(req.url.includes("/traer_uno")){
+        let {id}= url.parse(req.url, true).query;
+        fs.readFile(
+            "usuarios.json",
+            "utf-8",
+            (err, data)=>{
+                let json = JSON.parse(data);
+                let item = json.usuarios.find((elemento)=>{
+                    if(elemento.id==id){
+                        return elemento;
+                    }
+                });
+                if(item){                    
+                    res.writeHead(200, {"Content-Type": "application/json"});
+                    res.end(JSON.stringify(item));
+                }
+                else{
+                    res.writeHead(404, {"Content-Type":"application/json"});
+                    res.end();
+                }
+            }
+        )
     }
 })
 .listen(port, ()=>{

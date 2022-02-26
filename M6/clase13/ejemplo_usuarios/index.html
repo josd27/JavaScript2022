@@ -5,6 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function leer(ele){
+            console.log("ele",ele);
+            let url ="http://localhost:3000/traer_uno?id="+ele.value;
+            let nombre = document.getElementById("e_name");// document.querySelector("#e_name")
+            let apellido = document.getElementById("e_lastname");
+            let email = document.getElementById("e_email");
+            let password = document.getElementById("e_password");
+            fetch(url)
+            .then(res=> res.json())
+            .then(data=>{
+                //data.name
+                nombre.value= data.name;
+                apellido.value = data.lastname;
+                email.value = data.email;
+                password.value = data.password;
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Crear</h1>
@@ -20,6 +39,15 @@
     <form action="/eliminar">
         <input type="number" name="id" placeholder="id">
         <button>Eliminar</button>
+    </form>
+    <h1>Editar</h1>
+    <form method="get" action="/editar">
+        <input onblur="leer(this)" type="number" name="id" placeholder="id">
+        <input id="e_name" type="text" name="name" placeholder="Nombre">
+        <input id="e_lastname" type="text" name="lastname" placeholder="Apellido">
+        <input id="e_email" type="email" name="email" placeholder="Email">
+        <input id="e_password" type="password" name="password" placeholder="Clave">
+        <button>Update</button>
     </form>
 </body>
 </html>
