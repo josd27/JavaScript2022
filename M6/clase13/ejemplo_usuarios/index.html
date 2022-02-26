@@ -23,11 +23,23 @@
                 password.value = data.password;
             });
         }
+
+        function eliminar(){
+            let xhr= new XMLHttpRequest();
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    console.log("OK");
+                }
+            }
+            let data = document.getElementById("del_id");
+            xhr.open("delete", "/eliminar?id="+data.value);
+            xhr.send();
+        }
     </script>
 </head>
 <body>
     <h1>Crear</h1>
-    <form method="get" action="/crear">
+    <form method="post" action="/crear">
         <input type="number" name="id" placeholder="id">
         <input type="text" name="name" placeholder="Nombre">
         <input type="text" name="lastname" placeholder="Apellido">
@@ -36,9 +48,9 @@
         <button>Crear</button>
     </form>
     <h1>Eliminar</h1>
-    <form action="/eliminar">
-        <input type="number" name="id" placeholder="id">
-        <button>Eliminar</button>
+    <form action="/eliminar" method="get">
+        <input id="del_id"type="number" name="id" placeholder="id">
+        <button type="button" onclick="eliminar()">Eliminar</button>
     </form>
     <h1>Editar</h1>
     <form method="get" action="/editar">

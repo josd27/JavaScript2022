@@ -1,6 +1,7 @@
 const url = require("url");
 const http = require("http");
 const fs = require("fs");
+const {parse} = require("querystring");
 const port = 3000;
 
 
@@ -20,8 +21,9 @@ http.createServer((req,res)=>{
     }
     
     // ruta recepcionar /crear
-    if(req.url.includes("/crear")){//startWith
-        let {id,name, lastname, email, password} = url.parse(req.url, true).query;
+    if(req.url.includes("/crear") && req.method=="POST"){//startWith
+        //url.parse(req.url, true).query SOLO PARA PETICIONES POR GET
+        /*let {id,name, lastname, email, password} = url.parse(req.url, true).query;
         id= parseInt(id);
         let obj={
             id,
@@ -29,7 +31,27 @@ http.createServer((req,res)=>{
             lastname,
             email,
             password
-        }
+        }*/
+        //Desde formulario application/x-www-form-urlencoded
+        let body ='';
+        let obj={};
+        req.on("data", (payload)=>{
+            body = payload.toString();
+        });
+        req.on("end", ()=>{
+            obj= parse(body);//devuelve un json
+        })
+        //fin application/x-www-form-urlencoded
+        /*JSON
+        let obj={};
+        req.on("data", (payload)=>{
+            obj = JSON.parse(payload);
+        });
+        req.on("end", ()=>{
+            console.log("Termino de cargar el request")
+        })
+        */
+
         //Inicio Modificacion
         fs.readFile(
             "usuarios.json",
@@ -57,7 +79,8 @@ http.createServer((req,res)=>{
     }
 
     // ruta eliminar /eliminar id
-    if(req.url.includes("/eliminar")){
+    if(req.url.includes("/eliminar") && req.method=="DELETE"){
+        console.log("metodo", req.method);
         let {id} = url.parse(req.url, true).query;
         console.log(id);
         fs.readFile(
