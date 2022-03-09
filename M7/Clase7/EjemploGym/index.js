@@ -1,6 +1,6 @@
 const http = require("http");
 const url = require("url");
-const { insertar, consultar, editar, eliminar } = require("./consultas");
+const { insertar, consultar, editar, eliminar, consultar_uno } = require("./consultas");
 const fs = require("fs");
 
 http.createServer(async (req, res) => {
@@ -48,6 +48,15 @@ http.createServer(async (req, res) => {
         // Paso 4
         const respuesta = await eliminar(nombre);
         res.end(JSON.stringify(respuesta));
+    }
+
+    if(req.url.startsWith("/ejercicios?") && req.method =="GET"){
+        //recuperar nombre
+        let { nombre } = url.parse(req.url, true).query;
+        // Paso 2
+        const registros = await consultar_uno(nombre);
+        // Paso 3
+        res.end(JSON.stringify(registros));
     }
 }).listen(3000, () => {
     console.log("Ejecutando");

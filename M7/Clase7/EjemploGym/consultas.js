@@ -34,6 +34,17 @@ const consultar = async () => {
         return error;
     }
 };
+const consultar_uno = async (nombre) => {
+    // Paso 2
+    try {
+        const result = await pool.query(`SELECT * FROM ejercicios where nombre = '${nombre}'`);
+        return { rowCount:result.rowCount, rows:result.rows};
+    } catch (error) {
+        // Paso 3
+        console.log(error.code, error.details, error);
+        return error;
+    }
+};
 // Paso 4
 const editar = async (datos) => {
     // Paso 2
@@ -70,5 +81,5 @@ const eliminar = async (nombre) => {
 }
 
 // Paso 4
-module.exports = { insertar, consultar, editar, eliminar };
+module.exports = { insertar, consultar, editar, eliminar, consultar_uno };
 

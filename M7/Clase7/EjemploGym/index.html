@@ -14,13 +14,13 @@
     <fieldset>
       <legend>Editar ejercicio</legend>
       Nombre:
-      <select>
-        <option selected disabled>Seleccione un ejercicio</option>
+      <select id="select_editar" onchange="consultar_uno(this.value)">
+        <option  selected disabled>Seleccione un ejercicio</option>
       </select>
       <br />
-      Series: <input maxlength="3" name="series" /> <br />
-      Repeticiones: <input maxlength="3" name="repeticiones" /> <br />
-      Descanso: <input maxlength="3" name="descanso" /> <br />
+      Series: <input id="editar_series" maxlength="3" name="series" /> <br />
+      Repeticiones: <input id="editar_repeticiones" maxlength="3" name="repeticiones" /> <br />
+      Descanso: <input id="editar_descanso" maxlength="3" name="descanso" /> <br />
       <button>Editar</button>
     </fieldset>
   </form>
@@ -67,15 +67,36 @@
     });
   });
 
-  document.getElementById("eliminar").addEventListener("submit", function (e) {
+  document.getElementById("eliminar").addEventListener("submit", function (e) {    
     e.preventDefault();
     const nombre = e.target[1].value;
+    eliminar(nombre, e);
+  });
+
+  function consultar_uno(nombre){
+    let select_editar= document.getElementById("select_editar");
+    axios
+      .get("http://localhost:3000/ejercicios?nombre=" + nombre)
+      .then((res) => {
+        //autocompletar los input de editar
+        console.log(select_editar)
+        select_editar.value=nombre;
+        console.log("Resultado:", res);
+        document.getElementById("editar_descanso").value = res.data.rows[0].descanso;
+        document.getElementById("editar_series").value = res.data.rows[0].series;
+        document.getElementById("editar_repeticiones").value = res.data.rows[0].repeticiones;
+        res.data.code ? alert("Error codigo: " + res.data.code) : getData(e);
+      });
+  }
+
+
+  function eliminar(nombre, e){
     axios
       .delete("http://localhost:3000/ejercicios?nombre=" + nombre)
       .then((res) => {
         res.data.code ? alert("Error codigo: " + res.data.code) : getData(e);
       });
-  });
+  }
 
   function prepararData(e) {
     const nombre = e.target[1].value;
@@ -109,7 +130,10 @@
                 <td>${e.repeticiones}</td>
                 <td>${e.descanso} segundos</td>
                 
-                <td><a href="#">Eliminar</a></td>
+                <td>
+                  <a onclick='eliminar("${e.nombre}")' href="#">Eliminar</a>--
+                  <a onclick='consultar_uno("${e.nombre}")' href="#">Editar</a>
+                </td>
             </tr>
         `;
     });
