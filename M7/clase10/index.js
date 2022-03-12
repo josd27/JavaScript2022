@@ -28,6 +28,9 @@ async function ejecutar(){
     }
     //320
     cursor.read(100, mostrarData);
+    //cursor.read(100, mostrarData); MALO
+    //cursor.read(100, mostrarData);
+    //cursor.read(100, mostrarData);
 
 }
 ejecutar();
